@@ -1,0 +1,40 @@
+<div class="todo-app">
+  <h1>To-Do App</h1>
+  <div class="add-todo">
+    <input type="text" [(ngModel)]="newTodo" placeholder="What needs to be done?" />
+    <button (click)="addTodo()">Add</button>
+  </div>
+  <ul class="todo-list">
+    <li *ngFor="let todo of filteredTodos">
+      <input class="check-box" id="check-{{todo.id}}" type="checkbox" [(ngModel)]="todo.completed" (change)="onCheckboxChange(todo)">
+      <label for="check-{{todo.id}}" [class.completed]="todo.completed">{{ todo.task }}</label>  <!--   todo.completed = true => ăn css của thẻ span.completed   -->
+    </li>
+  </ul>
+  <div class="filters">
+    <div class="div-count-item">
+      <span class="count-item">{{ remainingItems }} item{{ remainingItems > 1 ? 's' : '' }} left</span>
+    </div>
+
+    <div class="div-button">
+      <button
+        class="btn-button"
+        [class.active]="selectedFilter === 'all'"
+        (click)="setFilter(TodoFilter.All)"
+        >All</button>
+      <button
+        class="btn-button"
+        [class.active]="selectedFilter === 'active'"
+        (click)="setFilter(TodoFilter.Active)"
+        >Active</button>
+      <button
+        class="btn-button"
+        [class.active]="selectedFilter === 'completed'"
+        (click)="setFilter(TodoFilter.Completed)"
+        >Completed</button>
+    </div>
+
+    <div class="div-clear-button">
+      <button (click)="clearComplete()" class="btn-clear">Clear completed</button>
+    </div>
+  </div>
+</div>

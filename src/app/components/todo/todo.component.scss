@@ -1,0 +1,188 @@
+.todo-app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .add-todo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    input {
+      width: 70%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #218838;
+      }
+    }
+  }
+
+  .todo-list {
+    list-style: none;
+    padding: 0;
+
+    .check-box {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 2px solid black;
+
+      // Hide the default checkbox appearance
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      // Add a custom appearance for the checked state
+      &:checked {
+        border-color: black;
+        background-color: transparent;
+
+        &::after {
+          content: '✔';
+          position: absolute;
+          top: 0;
+          left: 4px;
+          font-size: 16px;
+          color: green;
+        }
+      }
+
+      // Optional: Add some hover effect
+      &:hover {
+        border-color: greenyellow;
+      }
+
+      position: relative; // Ensure pseudo-element is positioned correctly
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+
+      label {
+        flex: 1;
+        text-align: left;
+        font-size: 150%;
+        margin-left: 10px;
+
+        &.completed {
+          text-decoration: line-through;
+          color: #888;
+        }
+      }
+
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+
+
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+
+    // Responsive
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 10px;
+
+    .div-count-item,
+    .div-button,
+    .div-clear-button {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .div-count-item .count-item {
+      padding: 10px 15px;
+    }
+
+    .div-button .btn-button,
+    .div-clear-button .btn-clear {
+      padding: 10px 15px;
+      background: none;
+      color: black;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: white;
+      }
+    }
+
+    .count-item {
+      position: absolute;
+      bottom: 0;
+      left: 2%;
+      padding: 10px 15px;
+    }
+
+    .div-button .btn-button.active {
+      border: 1px solid #de1367;
+    }
+
+    //// Responsive
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+
+      .div-count-item,
+      .div-button,
+      .div-clear-button {
+        flex: none;
+        width: 100%;
+      }
+
+      .div-button {
+        margin-top: 10px;
+      }
+    }
+
+  }
+
+  @media screen and (min-width: 768px) {
+    .todo-app {
+      max-width: 600px;
+    }
+  }
+}
